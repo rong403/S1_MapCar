@@ -1,5 +1,10 @@
 package mc.s1.mapcar.place.model;
 
+import java.util.List;
+
+import mc.s1.mapcar.review.model.ReviewVo;
+
+
 public class PlaceInfoVo {
 //	P_NO	VARCHAR2(20 BYTE)
 //	P_NAME	VARCHAR2(111 BYTE)
@@ -23,6 +28,12 @@ public class PlaceInfoVo {
 	private String p_unit;
 	private int place_no;
 	
+	private List<PlaceBookmarkVo> placebookmarklist;
+	private List<PlaceImageVo> placeimagelist;
+	private List<OpeVo> opelist;
+	private List<ChargeVo> chargelist;
+	private List<ReviewVo> reviewlist;
+	
 	public PlaceInfoVo() {
 		super();
 	}
@@ -30,7 +41,9 @@ public class PlaceInfoVo {
 	public String toString() {
 		return "PlaceInfoVo [p_no=" + p_no + ", p_name=" + p_name + ", p_road_no=" + p_road_no + ", p_address="
 				+ p_address + ", p_info=" + p_info + ", p_type=" + p_type + ", p_val=" + p_val + ", p_number="
-				+ p_number + ", p_unit=" + p_unit + ", place_no=" + place_no + "]";
+				+ p_number + ", p_unit=" + p_unit + ", place_no=" + place_no + ", placebookmarklist="
+				+ placebookmarklist + ", placeimagelist=" + placeimagelist + ", opelist=" + opelist + ", chargelist="
+				+ chargelist + ", reviewlist=" + reviewlist + "]";
 	}
 	public String getP_no() {
 		return p_no;
@@ -92,5 +105,34 @@ public class PlaceInfoVo {
 	public void setPlace_no(int place_no) {
 		this.place_no = place_no;
 	}
-	
+	public List<PlaceBookmarkVo> getPlacebookmarklist() {
+		return placebookmarklist;
+	}
+	public void setPlacebookmarklist(List<PlaceBookmarkVo> placebookmarklist) {
+		this.placebookmarklist = placebookmarklist;
+	}
+	public List<PlaceImageVo> getPlaceimagelist() {
+		return placeimagelist;
+	}
+	public void setPlaceimagelist(List<PlaceImageVo> placeimagelist) {
+		this.placeimagelist = placeimagelist;
+	}
+	public List<OpeVo> getOpelist() {
+		return opelist;
+	}
+	public void setOpelist(List<OpeVo> opelist) {
+		this.opelist = opelist;
+	}
+	public List<ChargeVo> getChargelist() {
+		return chargelist;
+	}
+	public void setChargelist(List<ChargeVo> chargelist) {
+		this.chargelist = chargelist;
+	}
+	public List<ReviewVo> getReviewlist() {
+		return reviewlist;
+	}
+	public void setReviewlist(List<ReviewVo> reviewlist) {
+		this.reviewlist = reviewlist;
+	}
 }

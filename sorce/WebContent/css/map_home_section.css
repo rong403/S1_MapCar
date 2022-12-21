@@ -1,14 +1,27 @@
+#main_section{
+    display: inline;
+    border: none;
+    width:100%;
+}
+#map{
+    position: relative;
+    border: none;
+    width:100%;
+    height:100%;
+    z-index: 30;
+}
 #map_home_page{
     position: absolute;
-    border-left: 1px solid rgba(0,0,0,.15);
-    box-sizing: content-box;
+    overflow-y: auto;
     top: 0;
-    left: 0;
     bottom: 0;
-    height: 100%;
     width: 450px;
     background-color: #fff;
     z-index: 100;
+}
+#map_home_page::-webkit-scrollbar { 
+    display: none;
+    width: 0 !important;
 }
 .search_input_box{
     display: block;
@@ -35,16 +48,20 @@
     height: 25px;
     width: 25px;
 }
+/* 날씨 */
+.weather{
+    height: 150px;
+}
+/* 목적지 리스트 */
+
 .heading{
-    position: relative;
     width: 390px;
-    margin-top: 20px;
-    padding: 0 12px 0 25px;
+    padding: 20px 12px 20px 25px;
     background: #fff;
     box-sizing: border-box;
     font-size: 1px;
     line-height: 1px;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
 }
@@ -60,4 +77,54 @@
     right: 25px;
     height: 1px;
     background: #dbdee0;
+}
+.around_wrap{
+    display: flex;
+    height: 1000px;
+    overflow: hidden;
+    flex: 1;
+    flex-direction: column;
+}
+.destination_list{
+    overflow: hidden;
+    overflow-y: auto;
+}
+.destination_div{
+    overflow: hidden;
+    overflow-y: auto;
+}
+.destination_li{
+    position: relative;
+    display: list-item;
+    padding: 21px 25px 18px;
+}
+.destination_data{
+    display: block;
+}
+.destination_name{
+    font-weight: 700;
+    margin-left: 6px;
+    font-size: 1.8rem;
+}
+
+/* 출발, 도착 버튼 */
+.des_button_1_span1{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 5px 5px 0 0;
+    border: 1px solid #eef0f4;
+    border-radius: 19px;
+}
+.des_button_1_span1_button{
+    position: relative;
+    display: inline-block;
+    padding: 7px 7px 6px 10px;
+    line-height: 1.6rem;
+    font-size: 1.3rem;
+}
+.page_button{
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid #eef0f4;
 }

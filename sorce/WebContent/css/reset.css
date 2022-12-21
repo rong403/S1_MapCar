@@ -2,7 +2,42 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+html, button, input, select, textarea, p, span {
+    font-family: "Noto Sans KR";
+}
 
+@font-face {
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://res.kurly.com/fonts/NotoSansKR-Light.woff2) format("woff2"), url(https://res.kurly.com/fonts/NotoSansKR-Light.woff) format("woff"), url(https://res.kurly.com/fonts/NotoSansKR-Light.otf) format("truetype")
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://res.kurly.com/fonts/NotoSansKR-Regular.woff2) format("woff2"), url(https://res.kurly.com/fonts/NotoSansKR-Regular.woff) format("woff"), url(https://res.kurly.com/fonts/NotoSansKR-Regular.otf) format("truetype")
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://res.kurly.com/fonts/NotoSansKR-Medium.woff2) format("woff2"), url(https://res.kurly.com/fonts/NotoSansKR-Medium.woff) format("woff"), url(https://res.kurly.com/fonts/NotoSansKR-Medium.otf) format("truetype")
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://res.kurly.com/fonts/NotoSansKR-Bold.woff2) format("woff2"), url(https://res.kurly.com/fonts/NotoSansKR-Bold.woff) format("woff"), url(https://res.kurly.com/fonts/NotoSansKR-Bold.otf) format("truetype")
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -31,4 +66,21 @@ ol, ul, li {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+button {
+	cursor: pointer;
+	border: 0;
+	background-color: transparent;
+}
+a {
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+section {
+	width: 100%;
+	height: 100vh;
+}
+*:focus {
+    outline:none;
 }
