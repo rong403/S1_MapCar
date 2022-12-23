@@ -1,0 +1,237 @@
+#join_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 900px;
+    margin-top: 50px;
+    background-color: rgb(255, 255, 255);
+}
+/* 페이지 타이틀 */
+.join_title{
+    margin-bottom: 50px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: -1px;
+    color: rgb(51, 51, 51);
+}
+.join_body{
+    width: 640px;
+    margin: auto;
+}
+.join_body_top{
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+    line-height: 17px;
+    text-align: right;
+}
+.join_tip_mark{
+    color: coral;
+}
+/* 회원가입 속성 리스트 */
+.join_body_mid{
+    padding: 0px;
+}
+.join_body_mid_val{
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 20px;
+}
+.join_body_mid_val_1{
+    width: 139px;
+    padding-top: 12px;
+}
+label{
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    line-height: 20px;
+}
+.join_body_mid_val_2{
+    flex: 1 1 0%;
+}
+.join_body_mid_val_2 > div{
+    padding-bottom: 0px;
+    position: relative;
+    height: 48px;
+}
+.join_body_mid_val_input{
+    width: 100%;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(51, 51, 51);
+    outline: none;
+    box-sizing: border-box;
+}
+.choice_box{
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+.choice_cop_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 44px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid darkgray;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(51, 51, 51);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.choice_cop_1_list {
+    display: none;
+    overflow: auto;
+    position: absolute;
+    width: 110px;
+    max-height: 200px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 20;
+}
+.choice_list_li {
+    cursor: pointer;
+    width: 100%;
+    height: 25px;
+    font-weight: 200;
+    background-color: white;
+    padding: 16.5px 14px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+    letter-spacing: -0.3px;
+    font-size: 14px;
+    color: rgb(71, 71, 71);
+}
+.choice_list_li:hover {
+    background-color: rgb(250, 250, 250);
+    font-weight: 500;
+}
+.choice_cmodel{
+    width: 220px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.choice_cmodel_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid darkgray;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(51, 51, 51);
+    outline: none;
+    box-sizing: border-box;
+}
+.choice_cmodel_1_list{
+    display: none;
+    overflow: auto;
+    position: absolute;
+    width: 220px;
+    max-height: 200px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 20;
+}
+.choice_cop_name{
+    display: inline-block;
+    font-weight: 400;
+    font-size: 16px;
+    
+}
+.choice_cmodel_name{
+    display: inline-block;
+    font-weight: 400;
+    font-size: 16px;
+    
+}
+.choice_list_btn_1{
+    background-image: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png);
+    width: 8px;
+    height: 5px;
+    margin-left: 5px;
+}
+.choice_list_btn_2{
+    background-image: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png);
+    width: 8px;
+    height: 5px;
+    margin-left: 5px;
+}
+/* 중복확인 버튼 */
+.join_body_mid_val_3{
+    width: 120px;
+    margin-left: 8px;
+}
+.join_body_mid_val_button{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 44px;
+    border-radius: 3px;
+    color: rgb(95, 0, 128);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(95, 0, 128);
+
+}
+.join_body_mid_val_button > span{
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+}
+.join_body_mid_val_button > span > img{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    vertical-align: middle;
+    transform: rotate(270deg);
+}
+/* 회원가입 버튼 */
+.join_button{
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid rgb(51, 51, 51);
+    padding: 40px 0px;
+}
+.join_button_submit{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 240px;
+    height: 56px;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(95, 0, 128);
+    border: 0px none;
+}
+.join_button_submit > span{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+}

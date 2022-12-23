@@ -1,13 +1,11 @@
-section {
-    min-width: 1050px;
-}
+
 #login_section {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    min-width: 900px;
 }
-/*로그인 - 텍스트 영역*/
 #login_txt {
     display: flex;
     justify-content: center;
@@ -24,7 +22,6 @@ section {
 #login_txt > span{
     margin-left: 10px;
 }
-/*로그인 - 사용자 입력 구간*/
 #login_user_area {
     width: 340px;
 }
@@ -32,21 +29,18 @@ section {
     display: flex; 
     flex-direction: column;
 }
-#input_ID, #input_PW {
+#input_ID, #input_PWD {
     width: 92%;
     height: 50px;
     padding: 0px 11px 1px 15px;
     margin-bottom: 13px;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 4px;
-
     font-size: 14px;
     font-weight: 400;
     color: rgb(51, 51, 51);
-    /*outline: none;*/
 }
 
-/*로그인 - 페이지 이동 버튼 영역*/
 #submit_area {
     display: flex;
     justify-content: space-between;
@@ -69,9 +63,10 @@ section {
     border: 1px solid rgb(95, 0, 128);
     color: rgb(95, 0, 128);
 }
-#submit_area > button > span {font-size: 16px; font-weight: 500;}
-
-/*ID, PW 찾기*/
+#submit_area > button > span {
+    font-size: 16px; 
+    font-weight: 500;
+}
 #search_user_account {
     display: flex;
     justify-content: center;

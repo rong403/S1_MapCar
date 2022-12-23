@@ -8,11 +8,9 @@
     border: none;
     width:100%;
     height:100%;
-    z-index: 30;
 }
 #map_home_page{
     position: absolute;
-    overflow-y: auto;
     top: 0;
     bottom: 0;
     width: 450px;
@@ -23,6 +21,24 @@
     display: none;
     width: 0 !important;
 }
+/* 페이지 닫기 버튼 */
+.close_button{
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+#all_hidden_button{
+    overflow: hidden;
+    display: inline-block;
+    width: 22px;
+    height: 49px;
+    font-size: 0;
+    background-color: #fff;
+    vertical-align: top;
+}
+
 .search_input_box{
     display: block;
     margin: auto;

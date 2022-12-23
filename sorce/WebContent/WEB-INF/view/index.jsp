@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="login_button">
-                <a href="#">
+                <a href="<%=request.getContextPath()%>/login">
                     <span>로그인</span>
 
                 </a>
