@@ -70,13 +70,13 @@
                     <span>맵카</span>
                 </div>
                 <div class="login_area" id="login_user_area">
-                    <form action="<%=request.getContextPath()%>/main" method="post">
+                    <form action="<%=request.getContextPath()%>/doLogin.do" method="post" onsubmit="return isValidation();">
                         <div class="input_area">
                             <input type="text" id="input_ID" name="ID" placeholder="아이디를 입력해주세요">
                             <input type="password" id="input_PWD" name="PWD" placeholder="비밀번호를 입력해주세요">
                         </div>
                         <div id="submit_area">
-                            <button type="submit" id="login_btn" onclick="location.href='<%=request.getContextPath()%>/main'">
+                            <button type="submit" id="login_btn">
                                 <span>로그인</span>
                             </button>
                             <button type="button" id="join_btn" onclick="location.href='<%=request.getContextPath()%>/join'">
@@ -93,5 +93,21 @@
             </div>
         </div>
     </section>
+    <script>
+    function isValidation(){
+		var userID = document.getElementById("input_ID").value;
+		var userPWD = document.getElementById("input_PWD").value;
+		
+		if(userID == "" || userID.length == 0){
+			alert("아이디를 입력해주세요.");
+			return false;
+		} else if(userPWD == "" || userPWD.length == 0){
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}
+		
+		return true;
+	}
+    </script>
 </body>
 </html>
