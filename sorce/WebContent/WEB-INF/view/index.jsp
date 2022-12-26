@@ -25,63 +25,32 @@
     </style>
 </head>
 <body>
-
-    <header>
-        <div id="header">
-            <div class="logo">
-                <a href="#" class="logo_a"><img src="./images/맵카로고.jpg" class="logo_img"></a>
-            </div>
-            <div class="content_bar">
-                <div class="content_bar_div">
-                    <ul class="content_bar_list">
-                        <li class="content_item">
-                            <a href="#" class="content_item_a">
-                                <center>
-                                    <img src="./images/지도홈로고.jpg" class="map_home_logo">
-                                </center>
-                                <span class="map_home">지도 홈</span>
-                            </a>
-                        </li>
-                        <li class="content_item">
-                            <a href="#" class="content_item_a">
-                                <center>
-                                    <img src="./images/길찾기로고.jpg" class="load_search_logo">
-                                </center>
-                                <span class="load_search">길찾기</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="login_button">
-                <a href="<%=request.getContextPath()%>/login">
-                    <span>로그인</span>
-
-                </a>
-            </div>
-        </div>
-    </header>
+    <%@include file="/WEB-INF/view/header.jsp" %>
     <section>
         <div id="main_section">
             <div id="map"></div>
             <div id="map_home_page">
-                <div class="search_input_box">
-                    <div id="map_home_search">
-                        <input type="text" placeholder=".장소, 도로 검색">
-                        <button type="button"><img src="./images/돋보기로고.jpg"></button>
-                    </div>
+                <div class="close_button">
+                    <button id="all_hidden_button"></button>
                 </div>
+                <div class="map_home_box">
+	                <div class="search_input_box">
+	                    <div id="map_home_search">
+	                        <input type="text" placeholder=".장소, 도로 검색">
+	                        <button type="button"><img src="./images/돋보기로고.jpg"></button>
+	                    </div>
+	                </div>
                 <div class="weather">
                     <div>날씨</div>
                     <div>출력위치</div>
                 </div>
 
                 
+                <h3 class="heading">
+                    <span>Place Info</span>
+                    <div class="line"></div>
+                </h3>
                 <div class="around_wrap">
-                    <h3 class="heading">
-                        <span>Place Info</span>
-                        <div class="line"></div>
-                    </h3>
                     <div class="destination_list">
 <%
 
@@ -135,9 +104,9 @@
 
 %>
                     </div>
-                    <div class="page_button">
-    
-                    </div>
+                </div>
+                <div class="page_button">
+
                 </div>
             </div>
 

@@ -10,16 +10,25 @@
     height:100%;
 }
 #map_home_page{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 450px;
-    background-color: #fff;
-    z-index: 100;
+    position: relative;
+    
 }
 #map_home_page::-webkit-scrollbar { 
     display: none;
     width: 0 !important;
+}
+.map_home_box{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    /* bottom: 0; */
+    width: 450px;
+    background-color: #fff;
+    z-index: 100;
 }
 /* 페이지 닫기 버튼 */
 .close_button{
@@ -27,7 +36,7 @@
     top: 50%;
     left: 100%;
     transform: translateY(-50%);
-    z-index: 100;
+    z-index: 10;
 }
 #all_hidden_button{
     overflow: hidden;
@@ -66,6 +75,7 @@
 }
 /* 날씨 */
 .weather{
+    width: 390px;
     height: 150px;
 }
 /* 목적지 리스트 */
@@ -95,19 +105,15 @@
     background: #dbdee0;
 }
 .around_wrap{
-    display: flex;
-    height: 1000px;
-    overflow: hidden;
-    flex: 1;
-    flex-direction: column;
+    height: 100%;
+    width: 450px;
+    overflow: auto;
+    flex: 1 1 0%;
+    
 }
 .destination_list{
-    overflow: hidden;
-    overflow-y: auto;
 }
 .destination_div{
-    overflow: hidden;
-    overflow-y: auto;
 }
 .destination_li{
     position: relative;
@@ -140,6 +146,7 @@
     font-size: 1.3rem;
 }
 .page_button{
+
     width: 100%;
     height: 100px;
     border-top: 1px solid #eef0f4;

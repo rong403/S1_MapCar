@@ -1,13 +1,15 @@
 body{
     display: flex;
 }
-header{
+.empty_space{
+    flex: 1 1 0%;
+}
+#header{
     height: 100vh;
     border-right: 1px solid rgba(0,0,0,.15);
     box-sizing: content-box;
-}
-#header{
-    width: 80px;
+    display: flex;
+    flex-direction: column;
 }
 .logo{
     display: flex;
@@ -23,10 +25,8 @@ header{
     width: 35px;
     height: 35px;
 }
-.content_bar{
-    height: 100%;
-}
 .content_bar_div{
+    height: 100%;
     margin-top: 30px;
 }
 .content_item{
@@ -58,10 +58,7 @@ header{
 .login_button{
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 80px;
     height: 100px;
-    position: absolute;
-    bottom: 0;
     align-items: center;
 }
