@@ -1,14 +1,13 @@
 #join_section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    min-width: 900px;
-    margin-top: 50px;
+    display: block;
+    overflow-y: scroll;
+    height: 100%;
+    min-width: 800px;
     background-color: rgb(255, 255, 255);
 }
 /* 페이지 타이틀 */
 .join_title{
+	margin-top: 50px;
     margin-bottom: 50px;
     font-size: 28px;
     line-height: 35px;
@@ -214,7 +213,6 @@ label{
 .join_button{
     display: flex;
     justify-content: center;
-    border-top: 2px solid rgb(51, 51, 51);
     padding: 40px 0px;
 }
 .join_button_submit{
@@ -233,4 +231,57 @@ label{
     display: inline-block;
     font-size: 16px;
     font-weight: 500;
+}
+
+
+/* 이용약관동의 버튼 */
+.agree_section_div{
+    border-top: 1px solid rgb(51, 51, 51);
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 0px 10px 20px;
+    margin-top: 20px;
+}
+.agree_section_div_btnlist{
+    flex: 1 1 0%;
+}
+.agree_section_div_btnlist_content:first-of-type{
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 12px;
+}
+.agree_section_div_btnlist_content:first-of-type span{
+    line-height: normal;
+    color: rgb(51, 51, 51);
+    font-weight: 500;
+    font-size: 18px;
+}
+.agree_section_div_btnlist_content{
+    display: flex;
+    padding: 8px 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+.agree_section_div_btn_button{
+    display: flex;
+    align-items: center;
+}
+.agree_section_div_btn_button_label{
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    vertical-align: top;
+    line-height: normal;
+    color: rgb(51, 51, 51);
+    padding: 0px;
+    font-size: 14px;
+}
+.agree_section_div_btn_button > span{
+    padding-left: 5px;
+    color: rgb(153, 153, 153);
+}
+.search_license{
+    padding-right: 22px;
+    letter-spacing: 0px;
 }

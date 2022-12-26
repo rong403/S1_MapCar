@@ -201,6 +201,53 @@
                         </div>
                     </div>
                 </div>
+                <div class="agree_section">
+                    <div class="agree_section_div">
+                        <div class="join_body_mid_val_1">
+                            <label>이용약관동의<span class="join_tip_mark">*</span></label>
+                        </div>
+                        <div class="agree_section_div_btnlist">
+                            <div class="agree_section_div_btnlist_content">
+                                <div class="agree_section_div_btn_button">
+                                    <label class="agree_section_div_btn_button_label">
+                                        <input type="checkbox" id="chk_all" name="a1">
+                                        <span>전체약관 동의</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="agree_section_div_btnlist_content">
+                                <div class="agree_section_div_btn_button">
+                                    <label class="agree_section_div_btn_button_label">
+                                        <input type="checkbox" id="a1" name="a1" class="chk">
+                                        <span>이용약관동의</span>
+                                    </label>
+                                    <span>(필수)</span>
+                                </div>
+                                <a href="#" class="search_license">약관보기</a>
+                            </div>
+                            <div class="agree_section_div_btnlist_content">
+                                <div class="agree_section_div_btn_button">
+                                    <label class="agree_section_div_btn_button_label">
+                                        <input type="checkbox" id="a1" name="a1" class="chk">
+                                        <span>개인정보수집이용 동의</span>
+                                    </label>
+                                    <span>(필수)</span>
+                                </div>
+                                <a href="#" class="search_license">약관보기</a>
+                            </div>
+                            <div class="agree_section_div_btnlist_content">
+                                <div class="agree_section_div_btn_button">
+                                    <label class="agree_section_div_btn_button_label">
+                                        <input type="checkbox" id="a1" name="a1" class="chk">
+                                        <span>만 14세 이상 확인</span>
+                                    </label>
+                                    <span>(필수)</span>
+                                </div>
+                                <a href="#" class="search_license">약관보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="join_button">
                     <button class="join_button_submit" type="submit">
                         <span>가입하기</span>
