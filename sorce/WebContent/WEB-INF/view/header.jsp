@@ -3,13 +3,13 @@
 <header>
         <div id="header">
             <div class="logo">
-                <a href="#" class="logo_a"><img src="./images/맵카로고.jpg" class="logo_img"></a>
+                <a href="<%=request.getContextPath()%>/main" class="logo_a"><img src="./images/맵카로고.jpg" class="logo_img"></a>
             </div>
             <div class="content_bar">
                 <div class="content_bar_div">
                     <ul class="content_bar_list">
                         <li class="content_item">
-                            <a href="#" class="content_item_a">
+                            <a href="<%=request.getContextPath()%>/main" class="content_item_a">
                                 <center>
                                     <img src="./images/지도홈로고.jpg" class="map_home_logo">
                                 </center>
