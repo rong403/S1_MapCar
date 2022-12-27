@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/reset.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/map_home_section.css">
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dskw1cnb5i"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dskw1cnb5i&submodules=geocoder"></script>
+    <script type="text/javascript" src="https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode.js?ncpClientId=dskw1cnb5i"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
     <title>맵카</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -36,8 +38,8 @@
                 <div class="map_home_box">
 	                <div class="search_input_box">
 	                    <div id="map_home_search">
-	                        <input type="text" placeholder=".장소, 도로 검색">
-	                        <button type="button"><img src="./images/돋보기로고.jpg"></button>
+	                        <input type="text" id="positionSearch" placeholder="장소, 도로 검색">
+	                        <button type="button" onclick="SearchMyStore();"><img src="./images/돋보기로고.jpg"></button>
 	                    </div>
 	                </div>
                 <div class="weather">
@@ -124,6 +126,71 @@ var marker = new naver.maps.Marker({
     map: map
 
 });
+let data = new Object(); // 위도 경도 들어가있는 객체
+function SearchMyStore() {
+    let position = $('#positionSearch').val(); // 사용자가 작성한 주소값 position 변수에 저장
+    naver.maps.Service.geocode({ // 이부분부터 지오코드 네이버 api들어감
+        query: position // query에 주소정보 들어감
+    }, function (status, response) {
+        if (status !== naver.maps.Service.Status.OK) {
+            return alert('Something wrong!');
+        }
+
+        var result = response.v2, // 검색 결과의 컨테이너
+            items = result.addresses; // 검색 결과의 배열 items배열에 json 형식으로 위도 / 경도가 들어감
+
+        data.latitude = items[0].y; // 위도 y가 위도고 
+        data.longitude = items[0].x; // 경도 x가 경도임
+
+        console.log("위도 =" + data.latitude + " 경도 = " + data.longitude)
+
+        showMap(data); // 위도 경도로 만들어놨던 객체를 지도에 찍어주기위해 보내줌
+    });
+}
+function showMap(pos) {
+    var HOME_PATH = window.HOME_PATH || '.';
+    var myPosition = new naver.maps.LatLng(data.latitude, data.longitude), // 여기에 위도와 경도를 차례대로 넣어주면, 마커가 생성된다.
+        map = new naver.maps.Map('map', {
+            center: myPosition,
+            zoom: 15
+        }),
+        marker = new naver.maps.Marker({
+            map: map,
+            position: myPosition
+        });
+ 	// 마커 내부정보
+    // 이부분이 마커를 클릭하면 출력되는 정보가 들어감. html코드형식으로 들어간다.
+    var contentString = [
+        '<div class="iw_inner">',
+        '   <h3>서울특별시청</h3>',
+        '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
+        '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
+        '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+        '   </p>',
+        '</div>'
+    ].join('');
+
+    var infowindow = new naver.maps.InfoWindow({ // 마커 디자인 정보
+        content: contentString,
+        maxWidth: 140,
+        backgroundColor: "white",
+        borderColor: "#2db400",
+        borderWidth: 2,
+        anchorSize: new naver.maps.Size(30, 30),
+        anchorSkew: true,
+        anchorColor: "white",
+        pixelOffset: new naver.maps.Point(20, -20)
+    });
+
+    naver.maps.Event.addListener(marker, "click", function (e) { // 클릭시 마커에 등록된 정보들 출력하는 함수인듯
+        if (infowindow.getMap()) {
+            infowindow.close();
+        } else {
+            infowindow.open(map, marker);
+        }
+    });
+}
+
 </script>
 </body>
 </html>
