@@ -39,7 +39,7 @@
 	                <div class="search_input_box">
 	                    <div id="map_home_search">
 	                        <input type="text" id="positionSearch" placeholder="장소, 도로 검색">
-	                        <button type="button" onclick="SearchMyStore();"><img src="./images/돋보기로고.jpg"></button>
+	                        <button type="button" onclick="Searchdata();"><img src="./images/돋보기로고.jpg"></button>
 	                    </div>
 	                </div>
                 <div class="weather">
@@ -68,7 +68,7 @@
                         <div class="destination_div">
                             <ul class="destination_ul">
                                 <li class="destination_li">
-                                    <div>
+                                    <div onclick="SearchMyStore('<%=volist.get(i).getP_address() %>');">
                                         <a>
                                             <div class="destination_data">
                                                 <span class="destination_name"><%=volist.get(i).getP_name() %></span>
@@ -127,8 +127,14 @@ var marker = new naver.maps.Marker({
 
 });
 let data = new Object(); // 위도 경도 들어가있는 객체
-function SearchMyStore() {
-    let position = $('#positionSearch').val(); // 사용자가 작성한 주소값 position 변수에 저장
+
+function Searchdata(){
+	let position = $('#positionSearch').val();
+	SearchMyStore(position);
+}
+
+function SearchMyStore(positionSearch) {
+    let position = positionSearch; // 사용자가 작성한 주소값 position 변수에 저장
     naver.maps.Service.geocode({ // 이부분부터 지오코드 네이버 api들어감
         query: position // query에 주소정보 들어감
     }, function (status, response) {
