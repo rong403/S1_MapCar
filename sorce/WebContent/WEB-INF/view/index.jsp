@@ -14,6 +14,7 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dskw1cnb5i&submodules=geocoder"></script>
     <script type="text/javascript" src="https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode.js?ncpClientId=dskw1cnb5i"></script>
     <script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
+    <script src="<%=request.getContextPath()%>/js/main.js"></script>
     <title>맵카</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -32,28 +33,29 @@
         <div id="main_section">
             <div id="map"></div>
             <div id="map_home_page">
-                <div class="close_button">
-                    <button id="all_hidden_button"></button>
-                </div>
                 <div class="map_home_box">
-	                <div class="search_input_box">
-	                    <div id="map_home_search">
-	                        <input type="text" id="positionSearch" placeholder="장소, 도로 검색">
-	                        <button type="button" onclick="Searchdata();"><img src="./images/돋보기로고.jpg"></button>
-	                    </div>
-	                </div>
-                <div class="weather">
-                    <div>날씨</div>
-                    <div>출력위치</div>
-                </div>
-
-                
-                <h3 class="heading">
-                    <span>Place Info</span>
-                    <div class="line"></div>
-                </h3>
-                <div class="around_wrap">
-                    <div class="destination_list">
+	                <div class="close_button">
+                        <button id="all_hidden_button"><img class="all_hidden_button_img" src="<%=request.getContextPath()%>/images/화살표머리로고.jpg"></button>
+                    </div>
+                	<div class="hidden_box">
+		                <div class="search_input_box">
+		                    <div id="map_home_search">
+		                        <input type="text" id="positionSearch" placeholder="장소, 도로 검색">
+		                        <button type="button" onclick="Searchdata();"><img src="<%=request.getContextPath()%>/images/돋보기로고.jpg"></button>
+		                    </div>
+		                </div>
+		                <div class="weather">
+		                    <div>날씨</div>
+		                    <div>출력위치</div>
+		                </div>
+		
+		                
+		                <h3 class="heading">
+		                    <span>Place Info</span>
+		                    <div class="line"></div>
+		                </h3>
+		                <div class="around_wrap">
+		                    <div class="destination_list">
 <%
 
 	List<PlaceInfoVo> volist = (List<PlaceInfoVo>)request.getAttribute("aaa");
@@ -65,47 +67,45 @@
 		for(int i=0; i<volist.size(); i++) {
 %>
 		<!-- 장소 반복 구간 -->
-                        <div class="destination_div">
-                            <ul class="destination_ul">
-                                <li class="destination_li">
-                                    <div onclick="SearchMyStore('<%=volist.get(i).getP_address() %>');">
-                                        <a>
-                                            <div class="destination_data">
-                                                <span class="destination_name"><%=volist.get(i).getP_name() %></span>
-                                                <span class="destination_type"><%=volist.get(i).getP_type() %></span>
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <div>
-                                                <a>
-                                                    <span>
-                                                        <%=volist.get(i).getP_address() %>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="des_button">
-                                        <div class="des_button_1">
-                                            <span class="des_button_1_span1">
-                                                <a href="#" role="button" class="des_button_1_span1_button">출발</a>
-                                                <a href="#" role="button" class="des_button_1_span1_button">도착</a>
-                                            </span>
-                                        </div>
-    
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+	                        <div class="destination_div">
+	                            <ul class="destination_ul">
+	                                <li class="destination_li">
+	                                    <div onclick="SearchMyStore('<%=volist.get(i).getP_address() %>');">
+	                                        <a>
+	                                            <div class="destination_data">
+	                                                <span class="destination_name"><%=volist.get(i).getP_name() %></span>
+	                                                <span class="destination_type"><%=volist.get(i).getP_type() %></span>
+	                                            </div>
+	                                        </a>
+	                                        <div>
+	                                            <div>
+	                                                <a>
+	                                                    <span>
+	                                                        <%=volist.get(i).getP_address() %>
+	                                                    </span>
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    <div class="des_button">
+	                                        <div class="des_button_1">
+	                                            <span class="des_button_1_span1">
+	                                                <a href="#" role="button" class="des_button_1_span1_button">출발</a>
+	                                                <a href="#" role="button" class="des_button_1_span1_button">도착</a>
+	                                            </span>
+	                                        </div>
+	    
+	                                    </div>
+	                                </li>
+	                            </ul>
+	                        </div>
 <%		
 		}
-%>
-	</table>
-<%
 	}
 
 %>
-                    </div>
+	                    </div>
+	                </div>
                 </div>
                 <div class="page_button">
 

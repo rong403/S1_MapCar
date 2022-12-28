@@ -5,11 +5,14 @@ body{
     flex: 1 1 0%;
 }
 #header{
+	position: relative;
     height: 100vh;
     border-right: 1px solid rgba(0,0,0,.15);
     box-sizing: content-box;
     display: flex;
+    background-color: #fff;
     flex-direction: column;
+    z-index: 100;
 }
 .logo{
     display: flex;
