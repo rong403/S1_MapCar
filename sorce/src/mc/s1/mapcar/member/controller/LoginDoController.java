@@ -48,12 +48,9 @@ public class LoginDoController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user_info", user_info);
 			session.setMaxInactiveInterval(600*1000);
-			response.sendRedirect(request.getContextPath() + "/");
+			response.sendRedirect(request.getContextPath() + "/main");
 		} else {
-			request.setAttribute("msg", "로그인 실패");
-			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp");
-			
-			view.forward(request, response);
+			System.out.println("로그인 실패");
 		}
 	}
 	

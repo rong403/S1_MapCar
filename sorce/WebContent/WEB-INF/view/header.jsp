@@ -29,10 +29,14 @@
             </div>
             <div class="empty_space"></div>
             <div class="login_button">
-                <a href="<%=request.getContextPath()%>/login">
-                    <span>로그인</span>
-
-                </a>
+            	<c:choose>
+                  		<c:when test="${empty user_info}">
+                    		<a href="<%=request.getContextPath()%>/login"><span>로그인</span></a>
+                   		</c:when>
+                   		<c:otherwise>
+	                        <a href="<%=request.getContextPath()%>/mypage"><span>마이페이지</span></a>
+                   		</c:otherwise>
+                   	</c:choose>
             </div>
         </div>
     </header>
