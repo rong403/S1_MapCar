@@ -1,3 +1,4 @@
+<%@page import="mc.s1.mapcar.common.api.model.WeatherVo"%>
 <%@page import="mc.s1.mapcar.place.model.PlaceInfoVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -47,7 +48,38 @@
 		                </div>
 		                <div class="weather">
 		                    <div>날씨</div>
-		                    <div>출력위치</div>
+		                    <div class="weatherlist">
+		                    <table>
+<%
+	List<WeatherVo> weatherVoList = (List<WeatherVo>)request.getAttribute("WeatherList");
+	if(weatherVoList == null){
+%>
+	<p>데이터가 업습니다.</p>
+<%
+	} else {
+		for(int i=0; i<weatherVoList.size(); i++) {
+			if(i % 12 == 0){
+%>
+			<tr>
+				<th><span class=""><%=i/12 %>시</span></th>
+<%
+			}
+			if(weatherVoList.get(i).getCategory().equals("TMP")||weatherVoList.get(i).getCategory().equals("PTY")){
+%>
+	        <th><span class=""><%=weatherVoList.get(i).getFcstValue() %></span></th>
+<%		
+			}
+			if(i % 12 == 11){
+%>
+			</tr>
+<%
+			}
+		}
+	}
+%>
+                                
+                            </table>
+		                    </div>
 		                </div>
 		
 		                
