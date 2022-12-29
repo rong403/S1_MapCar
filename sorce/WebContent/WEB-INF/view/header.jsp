@@ -1,3 +1,5 @@
+<%@page import="mc.s1.mapcar.common.api.model.OilVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <header>
@@ -27,7 +29,28 @@
                     </ul>
                 </div>
             </div>
-            <div class="empty_space"></div>
+            <div class="empty_space">
+            	<div class="oil_info">
+<%
+	List<OilVo> volist = (List<OilVo>)session.getAttribute("OilList");
+	if(volist == null){
+%>
+	<p>데이터가 업습니다.</p>
+<%
+	} else {
+		for(int i=0; i<volist.size(); i++) {
+		if(volist.get(i).getProdcd().equals("D047") || volist.get(i).getProdcd().equals("B027")){
+%>
+	        <span class="oil_type"><%=volist.get(i).getProdnm() %></span>
+	        <span class="oil_price"><%=volist.get(i).getPrice() %></span>
+	        <span class="oil_ud"><%=volist.get(i).getDiff() %></span></br>                                 
+<%		
+			}
+		}
+	}
+%>
+            	</div>
+            </div>
             <div class="login_button">
             	<c:choose>
                   		<c:when test="${empty user_info}">

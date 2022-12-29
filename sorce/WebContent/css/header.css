@@ -3,6 +3,26 @@ body{
 }
 .empty_space{
     flex: 1 1 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.oil_info{
+	display: block;
+	text-align: center;
+}
+.oil_info > span{
+	display: block;
+}
+.oil_type{
+	font-size: 15px;
+}
+.oil_price{
+	font-size: 16px;
+	font-weight: 300px;
+}
+.oil_ud{
+	font-size: 14px;
 }
 #header{
 	position: relative;

@@ -59,30 +59,30 @@
 		                    <div class="destination_list">
 <%
 
-	List<PlaceInfoVo> volist = (List<PlaceInfoVo>)request.getAttribute("aaa");
-	if(volist == null){
+	List<PlaceInfoVo> PlaceVolist = (List<PlaceInfoVo>)request.getAttribute("PlaceList");
+	if(PlaceVolist == null){
 %>
 	<p>게시글이 없습니다.</p>
 <%
 	} else {
-		for(int i=0; i<volist.size(); i++) {
+		for(int i=0; i<PlaceVolist.size(); i++) {
 %>
 		<!-- 장소 반복 구간 -->
 	                        <div class="destination_div">
 	                            <ul class="destination_ul">
 	                                <li class="destination_li">
-	                                    <div onclick="SearchMyStore('<%=volist.get(i).getP_address() %>');">
+	                                    <div onclick="SearchMyStore('<%=PlaceVolist.get(i).getP_address() %>');">
 	                                        <a>
 	                                            <div class="destination_data">
-	                                                <span class="destination_name"><%=volist.get(i).getP_name() %></span>
-	                                                <span class="destination_type"><%=volist.get(i).getP_type() %></span>
+	                                                <span class="destination_name"><%=PlaceVolist.get(i).getP_name() %></span>
+	                                                <span class="destination_type"><%=PlaceVolist.get(i).getP_type() %></span>
 	                                            </div>
 	                                        </a>
 	                                        <div>
 	                                            <div>
 	                                                <a>
 	                                                    <span>
-	                                                        <%=volist.get(i).getP_address() %>
+	                                                        <%=PlaceVolist.get(i).getP_address() %>
 	                                                    </span>
 	                                                </a>
 	                                            </div>
