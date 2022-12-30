@@ -31,6 +31,8 @@
 }
 /* 페이지 닫기 버튼 */
 .hidden_box{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     overflow: hidden;
