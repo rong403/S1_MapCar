@@ -48,6 +48,16 @@ public class PlaceInfoService {
 		JdbcTemplate.close(conn);
 		return volist;
 	}
+//	selectList  - 검색목록조회
+	public List<PlaceInfoVo> selectList(String searchword){
+		List<PlaceInfoVo> volist = null;
+		Connection conn = JdbcTemplate.getConnection();
+		
+		volist = dao.selectList(conn, searchword);
+		
+		JdbcTemplate.close(conn);
+		return volist;
+	}
 //	selectOne - 상세조회
 	public PlaceInfoVo selectOne(String p_no/*주로 PK*/){
 		PlaceInfoVo vo = null;

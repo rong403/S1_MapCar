@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +69,53 @@ public class PlaceInfoDao {
 			JdbcTemplate.close(rs);
 			JdbcTemplate.close(pstmt);
 		}
+		return volist;
+	}
+//	selectList  - 목록조회
+	public List<PlaceInfoVo> selectList(Connection conn, String searchword){
+		List<PlaceInfoVo> volist = null;
+		String sql = " select * from Place_Info where P_ROAD_NO like '%테헤란로%'";
+		
+		String sqlSearch = "select * from (select t1.*, rownum r from "
+				+ " (select * from Place_Info where P_NAME LIKE ? or P_ROAD_NO LIKE ? or P_ADDRESS LIKE ? ORDER BY P_NAME ASC, P_ROAD_NO ASC, P_ADDRESS ASC ) t1 ) t2 ";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			if(searchword != null && !searchword.equals("")) {
+				pstmt = conn.prepareStatement(sqlSearch);
+				searchword = "%"+searchword+"%";   // LIKE 형식
+				pstmt.setString(1, searchword);
+				pstmt.setString(2, searchword);
+				pstmt.setString(3, searchword);
+			}else {
+				pstmt = conn.prepareStatement(sql);
+			}
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				volist = new ArrayList<PlaceInfoVo>();
+				do {
+					PlaceInfoVo vo = new PlaceInfoVo();
+					vo = new PlaceInfoVo();
+					vo.setP_no(rs.getString("p_no"));
+					vo.setP_name(rs.getString("p_name"));
+					vo.setP_road_no(rs.getString("p_road_no"));
+					vo.setP_address(rs.getString("p_address"));
+					vo.setP_info(rs.getString("p_info"));
+					vo.setP_type(rs.getString("p_type"));
+					vo.setP_val(rs.getString("p_val"));
+					vo.setP_number(rs.getInt("p_number"));
+					vo.setP_unit(rs.getString("p_unit"));
+					vo.setPlace_no(rs.getInt("place_no"));
+					volist.add(vo);
+				} while(rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(pstmt);
+		}
+		
 		return volist;
 	}
 //	selectOne - 상세조회

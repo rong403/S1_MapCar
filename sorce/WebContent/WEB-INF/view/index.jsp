@@ -42,7 +42,7 @@
                 	<div class="hidden_box">
 		                <div class="search_input_box">
 		                    <div id="map_home_search">
-		                        <input type="text" id="positionSearch" placeholder="장소, 도로 검색">
+		                        <input type="text" id="positionSearch" onKeypress="javascript:if(event.keyCode==13){Searchdata()}">
 		                        <button type="button" onclick="Searchdata();"><img src="<%=request.getContextPath()%>/images/돋보기로고.jpg"></button>
 		                    </div>
 		                </div>
@@ -103,11 +103,12 @@
 	                        <div class="destination_div">
 	                            <ul class="destination_ul">
 	                                <li class="destination_li">
-	                                    <div onclick="SearchMyStore('<%=PlaceVolist.get(i).getP_address() %>');">
+	                                    <div onclick="SearchMyStore('<%=PlaceVolist.get(i).getP_address() %>', this);">
 	                                        <a>
 	                                            <div class="destination_data">
 	                                                <span class="destination_name"><%=PlaceVolist.get(i).getP_name() %></span>
 	                                                <span class="destination_type"><%=PlaceVolist.get(i).getP_type() %></span>
+	                                                <input type="hidden" class="a" value="<%=PlaceVolist.get(i).getP_no() %>">
 	                                            </div>
 	                                        </a>
 	                                        <div>
@@ -162,11 +163,67 @@ var marker = new naver.maps.Marker({
 let data = new Object(); // 위도 경도 들어가있는 객체
 
 function Searchdata(){
-	let position = $('#positionSearch').val();
-	SearchMyStore(position);
+	var inputdata = $('#positionSearch').val();
+	var query = "searchtext=" + inputdata;
+	$.ajax({
+		url:"<%=request.getContextPath()%>/placesearch",
+		type:"get",
+		contentType:"application/json",
+		data: query,
+		dataType:"json",
+		
+		success: function( data ){
+			var  result = new Array;
+		    result = data.jArr;
+			console.log(result);
+			
+			var content = '';
+			
+			$.each(result, function(key, value) {
+				content +=    '<div class="destination_div">';
+				content +=    '<ul class="destination_ul">';
+				content +=    '<li class="destination_li">';
+				content +=    '<div onclick="SearchMyStore(\''+value.p_address+'\', this);">';
+	            content +=    '<a>';
+	            content +=    '<div class="destination_data">';
+	            content +=    '<span class="destination_name">'+value.p_name+'</span>';
+	            content +=    '<span class="destination_type">'+value.p_type+'</span>';
+	            content +=    '<input type="hidden" class="a" value="'+value.p_no+'">';
+	            content +=    '</div>';
+	            content +=    '</a>';
+	            content +=    '<div>';
+	            content +=    '<div>';
+	            content +=    '<a>';
+	            content +=    '<span>'+value.p_address+'</span>';
+	            content +=    '</a>';
+	            content +=    '</div>';
+	            content +=    '</div>';
+	            content +=    '</div>';
+	            content +=    '<div class="des_button">';
+	            content +=    '<div class="des_button_1">';
+	            content +=    '<span class="des_button_1_span1">';
+	            content +=    '<a href="#" role="button" class="des_button_1_span1_button">출발</a>';
+	            content +=    '<a href="#" role="button" class="des_button_1_span1_button">도착</a>';
+	            content +=    '</span>';
+	            content +=    '</div>';
+	            content +=    '</div>';
+	            content +=    '</li>';
+				content +=    '</ul>';
+				content +=    '</div>';
+	            
+		      });
+			
+			console.log(content);
+			$(".destination_list").html(content);  
+		},   
+		error:function(){
+			alert("error");			
+		}
+	});
 }
 
-function SearchMyStore(positionSearch) {
+function SearchMyStore(positionSearch, thistarget) {
+	console.log($(thistarget).find(".a").val());
     let position = positionSearch; // 사용자가 작성한 주소값 position 변수에 저장
     naver.maps.Service.geocode({ // 이부분부터 지오코드 네이버 api들어감
         query: position // query에 주소정보 들어감
