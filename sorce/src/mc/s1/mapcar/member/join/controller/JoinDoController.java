@@ -39,9 +39,9 @@ public class JoinDoController extends HttpServlet {
 		String userPostCode = request.getParameter("POST_CODE");
 		String userAddr1 = request.getParameter("ADDR1");
 		String userAddr2 = request.getParameter("ADDR2");
-		String userAgree1 = "Y";
-		String userAgree2 = "Y";
-		String userAgree3 = "Y";
+		String userAgree1 = request.getParameter("AGREE1");
+		String userAgree2 = request.getParameter("AGREE2");
+		String userAgree3 = request.getParameter("AGREE3");
 		String userCarModel = request.getParameter("CAR_MODEL");
 		
 		System.out.println(userId);

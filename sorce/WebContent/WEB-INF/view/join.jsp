@@ -210,7 +210,7 @@
                             <div class="agree_section_div_btnlist_content">
                                 <div class="agree_section_div_btn_button">
                                     <label class="agree_section_div_btn_button_label">
-                                        <input type="checkbox" id="chk_all" name="a1">
+                                        <input type="checkbox" id="chk_all">
                                         <span>전체약관 동의</span>
                                     </label>
                                 </div>
@@ -218,7 +218,7 @@
                             <div class="agree_section_div_btnlist_content">
                                 <div class="agree_section_div_btn_button">
                                     <label class="agree_section_div_btn_button_label">
-                                        <input type="checkbox" id="a1" name="a1" class="chk">
+                                        <input type="checkbox" id="membera1" name="AGREE1" class="chk" value="Y">
                                         <span>이용약관동의</span>
                                     </label>
                                     <span>(필수)</span>
@@ -228,7 +228,7 @@
                             <div class="agree_section_div_btnlist_content">
                                 <div class="agree_section_div_btn_button">
                                     <label class="agree_section_div_btn_button_label">
-                                        <input type="checkbox" id="a1" name="a1" class="chk">
+                                        <input type="checkbox" id="membera2" name="AGREE2" class="chk" value="Y">
                                         <span>개인정보수집이용 동의</span>
                                     </label>
                                     <span>(필수)</span>
@@ -238,7 +238,7 @@
                             <div class="agree_section_div_btnlist_content">
                                 <div class="agree_section_div_btn_button">
                                     <label class="agree_section_div_btn_button_label">
-                                        <input type="checkbox" id="a1" name="a1" class="chk">
+                                        <input type="checkbox" id="membera3" name="AGREE3" class="chk" value="Y">
                                         <span>만 14세 이상 확인</span>
                                     </label>
                                     <span>(필수)</span>
@@ -429,14 +429,20 @@
 		}
 		
 	}
-	
+	// checkbox value Y/N으로 저장
+//	$("input:checkbox").change(function(){
+//	    if(this.checked){
+//	       $(this).attr('value', 'Y');
+//	    }else{
+//	       $(this).attr('value', 'F');
+//	    }
+//	});
 	function isValidation(){
 		var userName = document.getElementById("memberName").value;
 		var userHndNo = document.getElementById("memberHndNo").value;
 		var userPostCode = document.getElementById("memberPostCode").value;
 		var userAddr1 = document.getElementById("memberAddr1").value;
 		var userCarModel = document.getElementById("memberCarModel").value;
-		
 		if(!isIdChecked){
 			alert("아이디 중복확인이 필요합니다.");
 			return false;
@@ -463,6 +469,15 @@
 			return false;
 		} else if(userCarModel == "" || userCarModel.length == 0){
 			alert("차량모델을 입력해주세요.");
+			return false;
+		} else if($('#membera1').is(":checked") == false){
+			alert("필수약관동의를 체크해주세요.");
+			return false;
+		} else if($('#membera2').is(":checked") == false){
+			alert("필수약관동의를 체크해주세요.");
+			return false;
+		} else if($('#membera3').is(":checked") == false){
+			alert("필수약관동의를 체크해주세요.");
 			return false;
 		}
 		

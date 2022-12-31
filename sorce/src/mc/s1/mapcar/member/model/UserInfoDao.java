@@ -58,7 +58,7 @@ public class UserInfoDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "INSERT INTO USER_INFO (ID, PWD, NAME, EMAIL, HND_NO, POST_NO, ADD1, ADD2, AGREE1, AGREE2, AGREE3, CAR_MODEL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO USER_INFO (ID, PWD, NAME, EMAIL, HND_NO, POST_CODE, ADD1, ADD2, AGREE1, AGREE2, AGREE3, CAR_MODEL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		//member-query에 insertMember작성
 		
