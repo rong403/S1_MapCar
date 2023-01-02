@@ -13,12 +13,29 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dskw1cnb5i"></script>
     <script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
     <script src="<%=request.getContextPath()%>/js/loadsearch.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title>맵카</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
         html, button, input, select, textarea, span, a, p {
             font-family: "Noto Sans KR", "malgun gothic", /*AppleGothic*/dotum, sans-serif;
         }
+        .ui-autocomplete {
+            max-height: 500px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+            /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+	    }
+	    /* IE 6 doesn't support max-height
+	     * we use height instead, but this forces the menu to always be this tall
+	     */
+	    * html .ui-autocomplete {
+	        height: 100px;
+	    }
     </style>
     <style>
         
@@ -39,14 +56,18 @@
                         <div class="TODO_space">
 
                         </div>
-                        <div class="load_search_box">
+                         <div class="load_search_box">
                             <div class="start_btn_div">
                                 <input type="text" id="start_btn" name="start_data" placeholder="출발지 입력">
                             </div>
+                            <div class="search_value_1">
+                            </div>
                             <div class="mid_line"></div>
-                            <button type="button" id="switch_btn"><img src="<%=request.getContextPath()%>/images/위아래전환로고.jpg"></button>
+                            <button type="button" id="switch_btn"><img src="./images/위아래전환로고.jpg"></button>
                             <div class="arrival_btn_div">
                                 <input type="text" id="arrival_btn" name="arrival_data" placeholder="도착지 입력">
+                            </div>
+                            <div class="search_value_2">
                             </div>
                         </div>
                         <div class="controll_btn">
@@ -94,7 +115,7 @@
                                 </li>
                                 <li class="item_list">
                                     <a class="item_list_content">
-                                        <img src="<%=request.getContextPath()%>./images/찜버튼T.jpg">
+                                        <img src="<%=request.getContextPath()%>/images/찜버튼T.jpg">
                                         <button>찜 목록 나열</button>
                                     </a>
                                 </li>
@@ -117,6 +138,91 @@ var mapOptions = {
     zoom: 10
 };
 var map = new naver.maps.Map('map', mapOptions);
+
+
+$(function() {
+	$("#arrival_btn").autocomplete({ // autocomplete 구현 시작부
+		source : function( request, response ) {
+			$.ajax({
+				type: 'POST',
+				url: "<%= request.getContextPath() %>/placeaotocomplete",
+				dataType: "json",
+				data: {"searchtext":document.getElementById("arrival_btn").value},
+				success: function(data) {
+					response(
+						$.map(data, function(item) { //json[i] 번째 에 있는게 item 임.
+							return {
+								label: item.p_name, //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+								value: item.p_name, //그냥 사용자 설정값?
+								p_name:   item.p_name
+							}
+						})
+					);
+				}
+			});
+		},    // source 는 자동 완성 대상
+		select : function(event, ui) {    //아이템 선택시
+			console.log(ui.item);
+	        
+			document.getElementById("arrival_btn").value = ui.item.p_name
+        },
+        focus : function(event, ui) { // 포커스 시 이벤트
+            return false;
+        },
+        minLength: 0,// 최소 글자수
+        autoFocus: false, //첫번째 항목 자동 포커스 기본값 false
+        classes: { // 위젯 요소에 추가 할 클래스를 지정
+            "ui-autocomplete": "highlight"
+        },
+        delay: 500, //검색창에 글자 써지고 나서 autocomplete 창 뜰 때 까지 딜레이 시간(ms)
+//        disabled: true, //자동완성 기능 끄기
+        position: { my : "right top", at: "right bottom" }, // 제안 메뉴의 위치를 식별
+        close : function(event){ //자동완성창 닫아질때 호출
+            console.log(event);
+        }
+    });
+	$("#start_btn").autocomplete({ // autocomplete 구현 시작부
+		source : function( request, response ) {
+			$.ajax({
+				type: 'POST',
+				url: "<%= request.getContextPath() %>/placeaotocomplete",
+				dataType: "json",
+				data: {"searchtext":document.getElementById("start_btn").value},
+				success: function(data) {
+					response(
+						$.map(data, function(item) { //json[i] 번째 에 있는게 item 임.
+							return {
+								label: item.p_name, //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+								value: item.p_name, //그냥 사용자 설정값?
+								p_name:   item.p_name
+							}
+						})
+					);
+				}
+			});
+		},    // source 는 자동 완성 대상
+		select : function(event, ui) {    //아이템 선택시
+			console.log(ui.item);
+	        
+			document.getElementById("start_btn").value = ui.item.p_name
+        },
+        focus : function(event, ui) { // 포커스 시 이벤트
+            return false;
+        },
+        minLength: 0,// 최소 글자수
+        autoFocus: false, //첫번째 항목 자동 포커스 기본값 false
+        classes: { // 위젯 요소에 추가 할 클래스를 지정
+            "ui-autocomplete": "highlight"
+        },
+        delay: 500, //검색창에 글자 써지고 나서 autocomplete 창 뜰 때 까지 딜레이 시간(ms)
+//        disabled: true, //자동완성 기능 끄기
+        position: { my : "right top", at: "right bottom" }, // 제안 메뉴의 위치를 식별
+        close : function(event){ //자동완성창 닫아질때 호출
+            console.log(event);
+        }
+    });
+    
+});
 </script>
 </body>
 </html>

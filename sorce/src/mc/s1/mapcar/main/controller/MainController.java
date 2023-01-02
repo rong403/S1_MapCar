@@ -54,7 +54,6 @@ public class MainController extends HttpServlet {
 		
 		PlaceInfoService service = new PlaceInfoService();
 		List<PlaceInfoVo> volist = service.selectList();
-		System.out.println(volist);
 		
 		// 목적지 data
 		request.setAttribute("PlaceList", volist);
@@ -154,7 +153,7 @@ public class MainController extends HttpServlet {
 				volist.add(vo);
 			}
 			for (WeatherVo vo : volist) {
-				System.out.println(vo);
+//				System.out.println(vo);
 			}
 			conn.disconnect();
 		} catch(IOException e) {
@@ -228,7 +227,7 @@ public class MainController extends HttpServlet {
 	        	volist.add(vo);
 	        }
 	        for (OilVo vo : volist) {
-	        	System.out.println(vo);
+//	        	System.out.println(vo);
 	        }
 	        conn.disconnect();
     	} catch(IOException e) {

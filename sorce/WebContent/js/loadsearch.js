@@ -24,4 +24,16 @@ $(function() {
             $('.all_hidden_button_img').css("transform", "rotate(180deg)");
         }
     }); 
+    $('#start_btn').focusin(function() {
+            $('.search_value_1').css("display", "block");
+    });
+    $('#start_btn').focusout(function() {
+            $('.search_value_1').css("display", "none");
+    });
+    $('#arrival_btn').focusin(function() {
+            $('.search_value_2').css("display", "block");
+    });
+    $('#arrival_btn').focusout(function() {
+            $('.search_value_2').css("display", "none");
+    });
 });

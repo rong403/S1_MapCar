@@ -35,7 +35,7 @@
 	List<OilVo> volist = (List<OilVo>)session.getAttribute("OilList");
 	if(volist == null){
 %>
-	<p>데이터가 업습니다.</p>
+	<p></p>
 <%
 	} else {
 		for(int i=0; i<volist.size(); i++) {

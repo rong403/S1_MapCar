@@ -118,6 +118,34 @@ public class PlaceInfoDao {
 		
 		return volist;
 	}
+//	selectList  - 목록조회
+	public ArrayList<String> selectList2(Connection conn, String searchword){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<String> result = new ArrayList<String>();
+		
+		String sqlSearch = "select * from (select t1.*, rownum r from "
+				+ " (select P_NAME from Place_Info where P_NAME LIKE ? or P_ROAD_NO LIKE ? or P_ADDRESS LIKE ? ORDER BY P_NAME ASC, P_ROAD_NO ASC, P_ADDRESS ASC ) t1 ) t2 ";
+		
+		try {
+			pstmt = conn.prepareStatement(sqlSearch);
+			searchword = "%"+searchword+"%";   // LIKE 형식
+			pstmt.setString(1, searchword);
+			pstmt.setString(2, searchword);
+			pstmt.setString(3, searchword);
+			rs = pstmt.executeQuery();	//결과는 무조건 하나니까 if로
+			while(rs.next()) {
+				result.add(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 //	selectOne - 상세조회
 	public PlaceInfoVo selectOne(Connection conn, String p_no/*주로 PK*/){
 		PlaceInfoVo vo = null;

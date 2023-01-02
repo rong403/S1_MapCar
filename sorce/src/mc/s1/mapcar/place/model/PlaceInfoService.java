@@ -1,6 +1,7 @@
 package mc.s1.mapcar.place.model;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import mc.s1.mapcar.common.jdbc.JdbcTemplate;
@@ -57,6 +58,16 @@ public class PlaceInfoService {
 		
 		JdbcTemplate.close(conn);
 		return volist;
+	}
+//	selectList  - 검색목록조회 - p-name만
+	public ArrayList<String> selectList2(String searchword){
+		ArrayList<String> result = null;
+		Connection conn = JdbcTemplate.getConnection();
+		
+		result = dao.selectList2(conn, searchword);
+		
+		JdbcTemplate.close(conn);
+		return result;
 	}
 //	selectOne - 상세조회
 	public PlaceInfoVo selectOne(String p_no/*주로 PK*/){

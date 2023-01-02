@@ -122,6 +122,40 @@
     height: 23px;
     width: 23px;
 }
+.search_value_1{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 330px;
+}
+.search_value_1 ul{
+    padding: 0;
+    width: 100%;
+    border: 1px solid black;
+}
+.search_value_1 li{
+    border-bottom: 1px solid black;
+}
+.search_value_1 li:last-child{
+    border:none;
+}
+.search_value_2{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 330px;
+}
+.search_value_2 ul{
+    padding: 0;
+    width: 100%;
+    border: 1px solid black;
+}
+.search_value_2 li{
+    border-bottom: 1px solid black;
+}
+.search_value_2 li:last-child{
+    border:none;
+}
 /* 다시입력 / 길찾기 버튼 */
 .controll_btn{
     display: flex;
@@ -151,6 +185,7 @@
     display: block;
     height: 14px;
     font-size: 14px;
+    padding-left: 10px;
     background-color: #fff;
 }
 .line{
@@ -180,12 +215,11 @@
     
 }
 .wrap_list{
-    margin: 0 25px;
+    padding: 0 25px;
 }
 .item_list{
     display: block;
-    border-radius: 15px;
-    margin-bottom: 6px;
+    padding: 6px;
 }
 .item_list_content{
     display: inline-flex;
