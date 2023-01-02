@@ -8,7 +8,7 @@
     border: none;
     width:100%;
     height:100%;
-    z-index: -1;
+    z-index: 1;
 }
 #map_home_page{
     position: relative;
@@ -24,7 +24,7 @@
     position: fixed;
     height: 100vh;
     top: 0;
-    width: 450px;
+    width: 390px;
     background-color: #fff;
     z-index: 50;
     transition: transform 300ms linear;
@@ -59,13 +59,15 @@
     height: 20px;
     width: 13px;
 }
+/* 검색창 */
 .search_input_box{
     display: block;
     margin: auto;
     padding: 15px 25px;
 }
 #map_home_search{
-    width: 400px;
+	padding-left: 10px;
+    width: 330px;
     height: 50px;
     border: 1px solid black;
     display: flex;
@@ -86,23 +88,27 @@
 }
 /* 날씨 */
 tr { display: block; float: left; }
-th, td { display: block; width: 37px;}
+th, td {
+	display: block; 
+	width: 32px;
+	height: 25px;
+}
 .weather{
     width: 100%;
     height: 200px;
 }
 .weatherlist{
 	display: inline;
+	font-size: 14px;
 }
 .weatherlist > span{
 	display: inline;
-	font-size: 10px;
 }
 
 /* 목적지 리스트 */
 
 .heading{
-    width: 390px;
+    width: 340px;
     padding: 20px 12px 20px 25px;
     background: #fff;
     box-sizing: border-box;
@@ -127,7 +133,7 @@ th, td { display: block; width: 37px;}
 }
 .around_wrap{
     height: 100%;
-    width: 450px;
+    width: 390px;
     overflow: auto;
     flex: 1 1 0%;
     
@@ -145,9 +151,8 @@ th, td { display: block; width: 37px;}
     display: block;
 }
 .destination_name{
-    font-weight: 700;
-    margin-left: 6px;
-    font-size: 1.8rem;
+    font-weight: 600;
+    font-size: 1.4rem;
 }
 
 /* 출발, 도착 버튼 */
@@ -167,7 +172,6 @@ th, td { display: block; width: 37px;}
     font-size: 1.3rem;
 }
 .page_button{
-
     width: 100%;
     height: 60px;
     border-top: 1px solid #eef0f4;

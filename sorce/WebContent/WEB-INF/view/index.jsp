@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/map_home_section.css">
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dskw1cnb5i&submodules=geocoder"></script>
-    <script type="text/javascript" src="https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode.js?ncpClientId=dskw1cnb5i"></script>
     <script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
     <script src="<%=request.getContextPath()%>/js/main.js"></script>
     <title>맵카</title>

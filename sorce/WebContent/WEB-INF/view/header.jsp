@@ -13,15 +13,15 @@
                         <li class="content_item">
                             <a href="<%=request.getContextPath()%>/main" class="content_item_a">
                                 <center>
-                                    <img src="./images/지도홈로고.jpg" class="map_home_logo">
+                                    <img src="<%=request.getContextPath()%>/images/지도홈로고.jpg" class="map_home_logo">
                                 </center>
                                 <span class="map_home">지도 홈</span>
                             </a>
                         </li>
                         <li class="content_item">
-                            <a href="#" class="content_item_a">
+                            <a href="<%=request.getContextPath()%>/loadsearch" class="content_item_a">
                                 <center>
-                                    <img src="./images/길찾기로고.jpg" class="load_search_logo">
+                                    <img src="<%=request.getContextPath()%>/images/길찾기로고.jpg" class="load_search_logo">
                                 </center>
                                 <span class="load_search">길찾기</span>
                             </a>

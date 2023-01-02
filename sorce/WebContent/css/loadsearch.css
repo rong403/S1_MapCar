@@ -1,0 +1,206 @@
+#main_section{
+    display: inline;
+    border: none;
+    width:100%;
+}
+#map{
+    position: relative;
+    border: none;
+    width:100%;
+    height:100%;
+    z-index: 1;
+}
+#map_home_page{
+    position: relative;
+}
+#map_home_page::-webkit-scrollbar { 
+    display: none;
+    width: 0 !important;
+}
+.map_home_box{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    width: 390px;
+    background-color: #fff;
+    z-index: 50;
+    transition: transform 300ms linear;
+}
+/* 페이지 닫기 버튼 */
+.hidden_box{
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: 100%;
+    overflow: hidden;
+}
+.TODO_space{
+    height: 60px;
+}
+.close_button{
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    z-index: 10;
+}
+#all_hidden_button{
+    display: inline-block;
+    width: 25px;
+    height: 49px;
+    padding: 0;
+    font-size: 0;
+    background-color: #fff;
+    border: 2px solid #eef0f4;
+    border-radius: 5px;
+    vertical-align: top;
+}
+#all_hidden_button > img{
+    height: 20px;
+    width: 13px;
+}
+/* 검색창 */
+.load_search_box{
+    position: relative;
+    display: block;
+    margin: auto;
+    padding: 15px 25px;
+}
+.start_btn_div{
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-left: 10px;
+    width: 330px;
+    height: 50px;
+    display: flex;
+}
+.arrival_btn_div{
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 10px;
+    width: 330px;
+    height: 50px;
+    display: flex;
+}
+.mid_line{
+    width: 330px;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid slategray;
+}
+.load_search_box input{
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+.load_search_box > button{
+    display: flex;
+    padding: 0;
+    box-sizing: content-box;
+    border: 1px solid black;
+    border-radius: 19px;
+    overflow: hidden;
+    background-color: #fff;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 49px;
+    right: 60px;
+    justify-content: center;
+    align-items: center;
+}
+.load_search_box > button > img{
+    height: 23px;
+    width: 23px;
+}
+/* 다시입력 / 길찾기 버튼 */
+.controll_btn{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 45px;
+}
+.controll_btn_1{
+    background-color: rgb(219, 219, 219);
+    border: 1px solid darkgray;
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* 목적지 리스트 */
+.heading{
+    padding: 50px 25px 10px 25px;
+    background: #fff;
+    font-size: 1px;
+    line-height: 1px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+.heading > span{
+    display: block;
+    height: 14px;
+    font-size: 14px;
+    background-color: #fff;
+}
+.line{
+    margin: 5px 0;
+    border-top: 1px solid #dbdee0;
+}
+.bookmark{
+    margin: 0 25px;
+}
+.bookmark_list{
+    display: inline-flex;
+    border-radius: 15px;
+    margin-bottom: 6px;
+    justify-content: center;
+    align-items: center;
+}
+.bookmark_list > img{
+    display: inline-block;
+    margin: auto;
+    width: 15px;
+    height: 15px;
+}
+.around_wrap{
+    height: 100%;
+    overflow: auto;
+    flex: 1 1 0%;
+    
+}
+.wrap_list{
+    margin: 0 25px;
+}
+.item_list{
+    display: block;
+    border-radius: 15px;
+    margin-bottom: 6px;
+}
+.item_list_content{
+    display: inline-flex;
+    align-items: center;
+}
+.item_list_content > img{
+    display: inline-block;
+    margin: auto;
+    width: 15px;
+    height: 15px;
+}
+
+.page_button{
+
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid #eef0f4;
+}

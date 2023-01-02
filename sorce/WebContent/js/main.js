@@ -1,12 +1,3 @@
-function openNav() {
-    document.getElementById("map_home_page").style.width = "0px";
-  }
-  
-  /* Close when someone clicks on the "x" symbol inside the overlay */
-  function closeNav() {
-    document.getElementById("map_home_page").style.width = "0%";
-  }
-
 $(function() {
     var cnt1 = 0;
     $('#all_hidden_button').click(function() {
