@@ -49,7 +49,7 @@ public class PlaceAotocompleteController extends HttpServlet {
 	    
 	    for(int i = 0; i < result.size(); i++) {
 	    	object = new JSONObject();
-	        object.put("p_name", result.get(i));
+	        object.put("p_address", result.get(i));
 	        list.add(object);
 	    }
 	    

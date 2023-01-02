@@ -125,7 +125,7 @@ public class PlaceInfoDao {
 		ArrayList<String> result = new ArrayList<String>();
 		
 		String sqlSearch = "select * from (select t1.*, rownum r from "
-				+ " (select P_NAME from Place_Info where P_NAME LIKE ? or P_ROAD_NO LIKE ? or P_ADDRESS LIKE ? ORDER BY P_NAME ASC, P_ROAD_NO ASC, P_ADDRESS ASC ) t1 ) t2 ";
+				+ " (select P_ADDRESS from Place_Info where P_NAME LIKE ? or P_ROAD_NO LIKE ? or P_ADDRESS LIKE ? ORDER BY P_NAME ASC, P_ROAD_NO ASC, P_ADDRESS ASC ) t1 ) t2 ";
 		
 		try {
 			pstmt = conn.prepareStatement(sqlSearch);

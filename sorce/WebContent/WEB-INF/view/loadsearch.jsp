@@ -1,3 +1,4 @@
+<%@page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/reset.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/loadsearch.css">
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dskw1cnb5i"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dskw1cnb5i&submodules=geocoder"></script>
     <script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
     <script src="<%=request.getContextPath()%>/js/loadsearch.js"></script>
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
@@ -54,10 +55,12 @@
                     </div>
                     <div class="hidden_box">
                         <div class="TODO_space">
+							<span id="dis"></span>
+							<span id="dur"></span>
 
                         </div>
-                         <div class="load_search_box">
-                            <div class="start_btn_div">
+                        <div class="load_search_box">
+	                        <div class="start_btn_div">
                                 <input type="text" id="start_btn" name="start_data" placeholder="출발지 입력">
                             </div>
                             <div class="search_value_1">
@@ -72,7 +75,7 @@
                         </div>
                         <div class="controll_btn">
                             <button id="reset_btn" class="controll_btn_1">다시 입력</button>
-                            <button id="search_btn" class="controll_btn_1">길찿기</button>
+                            <button id="search_btn" class="controll_btn_1" onclick="searchLoad();">길찿기</button>
                         </div>
         
                         <div class="mark_block">
@@ -152,9 +155,9 @@ $(function() {
 					response(
 						$.map(data, function(item) { //json[i] 번째 에 있는게 item 임.
 							return {
-								label: item.p_name, //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
-								value: item.p_name, //그냥 사용자 설정값?
-								p_name:   item.p_name
+								label: item.p_address, //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+								value: item.p_address, //그냥 사용자 설정값?
+								p_address:   item.p_address
 							}
 						})
 					);
@@ -164,7 +167,7 @@ $(function() {
 		select : function(event, ui) {    //아이템 선택시
 			console.log(ui.item);
 	        
-			document.getElementById("arrival_btn").value = ui.item.p_name
+			document.getElementById("arrival_btn").value = ui.item.p_address
         },
         focus : function(event, ui) { // 포커스 시 이벤트
             return false;
@@ -192,9 +195,9 @@ $(function() {
 					response(
 						$.map(data, function(item) { //json[i] 번째 에 있는게 item 임.
 							return {
-								label: item.p_name, //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
-								value: item.p_name, //그냥 사용자 설정값?
-								p_name:   item.p_name
+								label: item.p_address, //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+								value: item.p_address, //그냥 사용자 설정값?
+								p_address:   item.p_address
 							}
 						})
 					);
@@ -204,7 +207,7 @@ $(function() {
 		select : function(event, ui) {    //아이템 선택시
 			console.log(ui.item);
 	        
-			document.getElementById("start_btn").value = ui.item.p_name
+			document.getElementById("start_btn").value = ui.item.p_address
         },
         focus : function(event, ui) { // 포커스 시 이벤트
             return false;
@@ -223,6 +226,44 @@ $(function() {
     });
     
 });
+function searchLoad() {
+	var startValue = document.getElementById("start_btn").value;
+	var arrivalValue = document.getElementById("arrival_btn").value;
+
+	if(startValue == "" || startValue.length == 0){
+		alert("출발지를 입력해주세요.");
+		return false;
+	} else if(arrivalValue == "" || arrivalValue.length == 0) {
+		alert("도착지를 입력해주세요.")
+		return false;
+	}
+	
+	var order = {
+			"addrx":startValue, 
+			"addry":arrivalValue
+			};
+	console.log(order);
+	$.ajax({
+		url:"<%= request.getContextPath() %>/LoadSearchConroller",
+		type:"post",
+		contentType:"application/json",
+		data: 
+			JSON.stringify(order),
+		
+		dataType:"json",
+		
+		success: function( data ){  
+			console.log(data.duration);
+			var obj = JSON.parse(data);
+			document.getElementById("dis").text(obj.distance);
+		},   
+		// error의 콜백함수의 매개변수로 들어오는 값은 url에서 전달 그리고 응답과정에서 발생하는 오류내용
+		error:function(){
+			
+		}
+	});
+}
+
 </script>
 </body>
 </html>
