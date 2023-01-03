@@ -55,8 +55,10 @@
                     </div>
                     <div class="hidden_box">
                         <div class="TODO_space">
-							<span id="dis"></span>
-							<span id="dur"></span>
+                    		<div><input id="dis" type="text"></div>
+                    		<div><input id="dur" type="text"></div>
+                    		<div><input id="fp" type="text"></div>
+                    		<div><input id="tf" type="text"></div>
 
                         </div>
                         <div class="load_search_box">
@@ -252,10 +254,16 @@ function searchLoad() {
 		
 		dataType:"json",
 		
-		success: function( data ){  
-			console.log(data.duration);
-			var obj = JSON.parse(data);
-			document.getElementById("dis").text(obj.distance);
+		success: function( data ){
+			var dur = data.duration/1000/60/60;
+			var dis = data.distance/1000;
+			var fp = data.fuelPrice
+			var tf = data.taxiFare
+			console.log(dur);
+			document.getElementById("dur").value = dur;
+			document.getElementById("dis").value = dis;
+			document.getElementById("fp").value = fp;
+			document.getElementById("tf").value = tf;
 		},   
 		// error의 콜백함수의 매개변수로 들어오는 값은 url에서 전달 그리고 응답과정에서 발생하는 오류내용
 		error:function(){

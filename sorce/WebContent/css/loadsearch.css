@@ -39,6 +39,23 @@
 }
 .TODO_space{
     height: 60px;
+    display: block;
+    width: 100%;
+}
+.TODO_space > div{
+    display: inline;
+}
+.TODO_space{
+    height: 60px;
+    display: block;
+    width: 100%;
+}
+.TODO_space input{
+	width: 180px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
 }
 .close_button{
     position: absolute;
