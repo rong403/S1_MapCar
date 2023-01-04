@@ -77,7 +77,8 @@ public class PlaceInfoDao {
 		String sql = " select * from Place_Info where P_ROAD_NO like '%테헤란로%'";
 		
 		String sqlSearch = "select * from (select t1.*, rownum r from "
-				+ " (select * from Place_Info where P_NAME LIKE ? or P_ROAD_NO LIKE ? or P_ADDRESS LIKE ? ORDER BY P_NAME ASC, P_ROAD_NO ASC, P_ADDRESS ASC ) t1 ) t2 ";
+				+ " (select * from Place_Info where P_NAME LIKE ? or P_ROAD_NO LIKE ? or "
+				+ "P_ADDRESS LIKE ? ORDER BY P_NAME ASC, P_ROAD_NO ASC, P_ADDRESS ASC ) t1 ) t2 ";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {

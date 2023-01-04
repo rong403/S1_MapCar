@@ -66,33 +66,18 @@ public class LoadSearchConroller extends HttpServlet {
 		String result = service.direction(xy1, xy2);
 		System.out.println(result);
 		
-//		JSONObject ojb = null;
 		JSONObject summary = null;
 		try {
 			JSONObject root = (JSONObject)parser.parse(result);
-//        System.out.println("root ::: " + root);
 			
 			JSONObject route = (JSONObject) root.get("route");
-//        System.out.println("route ::: " + route);
 			
 			JSONArray traoptimal = (JSONArray) route.get("traoptimal");
 			
-//        System.out.println("traoptimal ::: " + traoptimal);
 			for (int i = 0 ; i < traoptimal.size() ; i++){
 				JSONObject traoptimalObj = (JSONObject) traoptimal.get(i);
 				summary = (JSONObject) traoptimalObj.get("summary");
-//        	System.out.println("summary ::: " + summary);
-				//result = summary.toString();
 			}
-			
-			//JSONArray path = (JSONArray) traoptimal.get("path");
-//        naverDistance = summary.getInt("distance");
-//        naverDepartureTime = summary.getString("departureTime");
-//        naverTollFare = summary.getInt("tollFare");
-//        naverTaxiFare = summary.getInt("taxiFare");
-//        naverFuelPriace = summary.getInt("fuelPrice");
-//        
-//        if(naverRouteList != null) naverRouteList.clear();
 			
 		} catch(Exception e) {
 			
